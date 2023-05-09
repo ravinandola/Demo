@@ -4,12 +4,12 @@ import { View, Image, StyleSheet, Text } from 'react-native'
 import { useDispatch } from 'react-redux';
 import { login } from '../../redux/reducer/authSlice';
 
-const LoginScreen = ({ navigation }) => {
+const WelcomScreen = ({ navigation }) => {
   const dishpatch = useDispatch();
-  
+
   const handleLogin = () => {
-    navigation.navigate('tab', { screen: 'Home' });
-    dishpatch(login())
+    navigation.navigate('Login');
+    // dishpatch(login())
   }
   return (
     <>
@@ -59,4 +59,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default LoginScreen
+export default WelcomScreen

@@ -9,7 +9,7 @@ export const authSlice = createSlice({
         login: (state) => {
             state.isLogin = true;
         },
-        logout:(state) =>{
+        logout: (state) => {
             state.isLogin = false;
         }
     }
