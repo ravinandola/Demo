@@ -2,18 +2,36 @@ import { Icon, ListItem, Text } from "@rneui/base"
 import { Divider } from '@rneui/themed';
 import { useEffect } from "react";
 import { View, ScrollView } from "react-native";
+import ChangePassword from "../passcodeScreen/ChangePassword";
+import { useState } from "react";
+import LocalStorage from "../../common/LocalStorage";
 
 const MoreList = ({ navigation }) => {
-
+    const [show, setShow] = useState(false)
     const hanldeList = (tab) => {
         if (tab === "SingOut") {
-            navigation.navigate("Domain")
+            LocalStorage.clear('finalPasscode').then(() => {
+                LocalStorage.clear("firstTimePasscode").then(() => {
+                    navigation.navigate("Domain");
+                })
+            })
+        }
+        if (tab === 'ChangePassword') {
+            setShow(true);
+            return;
         }
         navigation.navigate(tab);
     }
 
+    const ChangePasswordElement = (
+        <ChangePassword closeModal={() => {
+            setShow(false);
+        }} />
+    )
     return (
         <>
+
+            {show && ChangePasswordElement}
             <View style={{ alignItems: 'center', padding: 10, backgroundColor: '#317F91' }}>
                 <Text style={{ color: "white" }}>More</Text>
             </View>
@@ -43,7 +61,7 @@ const MoreList = ({ navigation }) => {
                         <ListItem.Chevron />
                     </ListItem>
                     <Divider />
-                    <ListItem onPress={() => { hanldeList("ChnagePasscode") }}>
+                    <ListItem onPress={() => { hanldeList("ChangePassword") }}>
                         <Icon name="lock-outline" type="material-community" color="grey" />
                         <ListItem.Content>
                             <ListItem.Title>Chnage Passcode</ListItem.Title>

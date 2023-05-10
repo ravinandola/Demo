@@ -6,11 +6,16 @@ const set = (key, value) => {
 
 }
 const get = async (key) => {
-    value = await AsyncStorage.getItem(key);
+    let value = null;
+    try {
+        value = await AsyncStorage.getItem(key);
+    } catch (error) { }
     if (value) {
-        value = JSON.parse(value)
+        try {
+            value = JSON.parse(value)
+        } catch (error) { }
     }
-    return value
+    return value;
 }
 
 const clear = (key) => {

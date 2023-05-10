@@ -77,7 +77,7 @@ const AdutiSubmit = ({ route, navigation }) => {
                     />
                     <Text style={{ marginBottom: 10 }}>Questionnaire:*</Text>
                     <RNPickerSelect
-                        onValueChange={(value) => console.log(value)}
+                        onValueChange={(value) => setQuestion(value)}
                         items={question}
                         value={questionVlaue}
                         placeholder={{ label: '---Select an option---', value: null }}

@@ -8,7 +8,7 @@ import { Dialog, Image } from '@rneui/base';
 import ErrorDialogbox from '../../common/Alert';
 const LoginScreen = ({ navigation }) => {
     const { visible: show, show: showModal, hide: hideModal, } = UseVisible();
-    const { showAlert, showAlertWithHelp } = ErrorDialogbox()
+    const { showAlert } = ErrorDialogbox()
 
     useEffect(() => {
         showModal()
@@ -18,10 +18,10 @@ const LoginScreen = ({ navigation }) => {
         if (value.username == "" || value.password == "") {
             showAlert();
         } else {
-            navigation.navigate('Main');
+            navigation.navigate('Passcode');
             hideModal();
+            LocalStorage.set("isLogin", 'Login')
         };
-
     }
     return (
         <>
