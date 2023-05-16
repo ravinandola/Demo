@@ -2,7 +2,7 @@ import { Text } from "@rneui/base";
 import { useState } from "react";
 import { useEffect, useRef } from "react";
 import { View } from "react-native";
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity,Platform } from "react-native";
 import PinView from "react-native-pin-view";
 import RBSheet from "react-native-raw-bottom-sheet";
 import LocalStorage from "../../common/LocalStorage";

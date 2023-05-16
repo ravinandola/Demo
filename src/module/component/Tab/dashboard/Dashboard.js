@@ -1,8 +1,21 @@
 import { Card, Divider, Icon, Text } from "@rneui/base"
-import { ScrollView } from "react-native"
+import { ScrollView, TouchableOpacity } from "react-native"
 import { View } from "react-native"
 
-const Dashboard = () => {
+const Dashboard = ({navigation}) => {
+
+    const halndleLink = (type) => {
+        switch(type){
+            case 'expo' :  navigation.navigate('Webview', {
+                link:'https://expo.dev/'
+            })
+            case 'reactnavigation': navigation.navigate('Webview', {
+                link:'https://reactnavigation.org/'
+            })
+            break;
+        }
+
+    }
     return (
         <>
             <View style={{ height: 700, backgroundColor: 'white' }}>
@@ -23,20 +36,24 @@ const Dashboard = () => {
                         </View>
                         <View>
                             <View>
-                                <Card>
-                                    <Card.Title><Icon type="material-community" size={50} color={'green'} name="av-timer"></Icon></Card.Title>
-                                    <Text style={{ fontSize: 10 }}>Fairwork Award Employee</Text>
+                                <TouchableOpacity onPress={() => { halndleLink('expo') }}>
+                                    <Card >
+                                        <Card.Title><Icon type="material-community" size={50} color={'green'} name="av-timer"></Icon></Card.Title>
+                                        <Text style={{ fontSize: 20 }}>Expo Link View</Text>
 
-                                </Card>
+                                    </Card>
+                                </TouchableOpacity>
                             </View>
                         </View>
                     </View>
                     <View style={{ justifyContent: 'space-evenly' }}>
                         <View >
+                        <TouchableOpacity onPress={() => { halndleLink('reactnavigation') }}>
                             <Card>
                                 <Card.Title><Icon type="material-community" size={50} color={'green'} name="link-variant"></Icon></Card.Title>
-                                <Text style={{ fontSize: 10 }}>Fairwork Award Employee</Text>
+                                <Text style={{ fontSize: 20 }}>React Navigation</Text>
                             </Card>
+                            </TouchableOpacity>
                         </View>
                         <View>
                             <View>
@@ -53,10 +70,8 @@ const Dashboard = () => {
                     </View>
                     <Divider />
                 </ScrollView>
-
             </View>
         </>
     )
-
 }
 export default Dashboard

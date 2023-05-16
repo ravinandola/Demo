@@ -5,7 +5,6 @@ import { StyleSheet, Picker, DatePickerIOS, TouchableOpacity } from 'react-nativ
 import SearchableDropdown from 'react-native-searchable-dropdown';
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
-import BottomSheet from 'react-native-bottom-sheet';
 
 import _, { create } from "lodash";
 import RNPickerSelect from "react-native-picker-select";
@@ -111,7 +110,6 @@ const AdutiSubmit = ({ route, navigation }) => {
                             {!date ? <Text style={styles.date} >---Selct Date---</Text> : <Text style={styles.date} >{date}</Text>}
                         </View>
                     </TouchableOpacity>
-
                 </View>
                 <View style={{ marginTop: 20, marginLeft: 2 }}>
                     <CheckBox

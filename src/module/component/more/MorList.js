@@ -27,7 +27,8 @@ const MoreList = ({ navigation }) => {
         <ChangePassword closeModal={() => {
             setShow(false);
         }} />
-    )
+    );
+    
     return (
         <>
 

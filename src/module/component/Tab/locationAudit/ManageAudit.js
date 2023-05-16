@@ -2,7 +2,6 @@ import { Text } from "@rneui/base"
 import { Button, CheckBox, Divider } from "@rneui/base/dist";
 import { useState } from "react";
 import { View } from "react-native"
-import { UseVisible } from "../../../common/hook/useVisible";
 import ErrorDialogbox from "../../../common/Alert";
 
 const ManageAudit = ({ navigation, route }) => {

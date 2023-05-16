@@ -15,16 +15,49 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSFaceIDUsageDescription": "This app will optionally use Face ID or Touch ID to save login"
+      },
+      "bundleIdentifier": "yes"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.ravi_nandola.Demo"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "06e07a3e-65d1-4170-8db2-ac4db71815ce",
+        "build": {
+          "experimental": {
+            "ios": {
+              "appExtensions": [
+                {
+                  "targetName": "myappextension",
+                  "bundleIdentifier": "com.myapp.extension",
+                  "entitlements": {
+                    "com.apple.example": "entitlement value"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
     }
-  }
+  },
+  "plugins": [
+    [
+      "expo-local-authentication",
+      {
+        "faceIDPermission": "Allow $(Demo) to use Face ID."
+      }
+    ]
+  ]
 }

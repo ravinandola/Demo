@@ -4,23 +4,24 @@ import { Icon, Image } from "@rneui/base";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Enrolments from "../more/training/Enrolments";
 import MoreList from "../more/MorList";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { View } from "react-native";
 import MoreNavigator from "../more/MoreNavigator";
 import Task from "./task/Task";
-import { Title } from "react-native-paper";
 import oparationsManuals from "./oparationsManuals";
 import Loaction from "./locationAudit/Loaction";
 import LocationNavigator from "./locationAudit/LocationNavigator";
 import OparationsManuals from "./oparationsManuals";
 import OparationsManualsNavigator from "./oparationsManuals/OparationsManualsNavigator";
+import NetInfo from "@react-native-community/netinfo";
+import ErrorDialogbox from "../../common/Alert";
 
 const Stack = createNativeStackNavigator();
 
 const TabNavigator = ({ navigation }) => {
 
     const Tab = createBottomTabNavigator();
-
+   
 
     return (
         <Tab.Navigator initialRouteName='Home' screenOptions={({ route }) => ({

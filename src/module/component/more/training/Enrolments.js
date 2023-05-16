@@ -1,7 +1,6 @@
-import { ButtonGroup, Card, Image, Tab, Text } from "@rneui/base"
+import { ButtonGroup, Image, Text } from "@rneui/base"
 import { useState } from "react";
 import { ScrollView, View } from "react-native"
-import { BottomSheet } from 'react-native-btr';
 const Enrolments = () => {
     const [index, setIndex] = useState(0);
 

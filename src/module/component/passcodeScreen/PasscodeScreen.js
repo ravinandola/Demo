@@ -6,7 +6,8 @@ import { View } from 'react-native';
 import PinView from 'react-native-pin-view';
 import { TouchableOpacity } from 'react-native';
 import LocalStorage from '../../common/LocalStorage';
-
+import * as LocalAuthentication from 'expo-local-authentication';
+import NetInfo from "@react-native-community/netinfo";
 
 const PasscodeScreen = ({ navigation, route }) => {
     const [label, setLable] = useState({
@@ -15,6 +16,7 @@ const PasscodeScreen = ({ navigation, route }) => {
     });
     const pinViewRef = useRef(null);
 
+  
     async function fetchData() {
         let finalPasscode = await LocalStorage.get('finalPasscode') || null;
         let title = ''
@@ -27,7 +29,6 @@ const PasscodeScreen = ({ navigation, route }) => {
             subTitle = 'Enter a 4 digit Passscode.'
         }
         setLable({
-            ...label,
             ['title']: title,
             ['subTitle']: subTitle
         });
@@ -43,7 +44,6 @@ const PasscodeScreen = ({ navigation, route }) => {
 
     handleValueChnage = async (value) => {
         let finalPasscode = await LocalStorage.get('finalPasscode') || null;
-        console.log(finalPasscode)
         let firstTimePasscode = await LocalStorage.get('firstTimePasscode') || null;
         if (value.length === 4) {
             if (finalPasscode) {
@@ -91,6 +91,28 @@ const PasscodeScreen = ({ navigation, route }) => {
         pinViewRef.current.clear();
     };
 
+    const onFaceId = async () => {
+        try {
+            // Checking if device is compatible
+            const isCompatible = await LocalAuthentication.hasHardwareAsync();
+
+            if (!isCompatible) {
+                throw new Error('Your device isn\'t compatible.')
+            }
+
+            // Checking if device has biometrics records
+            const isEnrolled = await LocalAuthentication.isEnrolledAsync();
+
+            if (!isEnrolled) {
+                throw new Error('No Faces / Fingers found.')
+            }
+
+            // Authenticate user
+            let ravi = await LocalAuthentication.authenticateAsync();
+        } catch (error) {
+            console.log("ffd", error)
+        }
+    };
     return (
 
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', margin: 20 }}>
@@ -108,7 +130,6 @@ const PasscodeScreen = ({ navigation, route }) => {
                 onValueChange={(value) => handleValueChnage(value)}
                 buttonSize={75}
                 buttonTextStyle={{
-                    fontWeight: 'blod',
                     color: "white",
                 }}
                 errorText="Incorrect PIN"

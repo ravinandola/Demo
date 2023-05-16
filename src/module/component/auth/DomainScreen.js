@@ -1,4 +1,4 @@
-import ModalWrapper from "../../common/ModalWrapper"
+import ModalWrapper from "../../common/ModalWebviewWrapper"
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Formik } from 'formik';
@@ -20,7 +20,6 @@ const DomainScreen = ({ navigation }) => {
     }, []);
 
     const onSubmitDomain = (value) => {
-        console.log(value)
         if (value.domain == "") {
             showAlert()
             return;
