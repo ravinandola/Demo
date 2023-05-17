@@ -1,76 +1,64 @@
-import { Card, Divider, Icon, Text } from "@rneui/base"
+import { Divider, Text, Icon } from "@rneui/base"
 import { ScrollView, TouchableOpacity } from "react-native"
 import { View } from "react-native"
+import ImageViewElement from "../../../common/ImageViewElement";
+import { useState } from "react";
+import { Button } from "@rneui/themed";
+import Layout from "../../../common/Layout";
+import IconCardList from "../../../common/IconCardList";
+const images = [
+    {
+        uri: "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg",
 
-const Dashboard = ({navigation}) => {
+    },
+    {
+        uri: "https://img.freepik.com/free-photo/blue-house-with-blue-roof-sky-background_1340-25953.jpg",
+
+    },
+    {
+        uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXgr4U20-p8WCE-ykuIEFWE5KOs93C1o9NqA&usqp=CAU",
+    }
+];
+const Dashboard = ({ navigation }) => {
+    const [visible, setIsVisible] = useState(false);
+    const [currentImageIndex, setImageIndex] = useState(0);
 
     const halndleLink = (type) => {
-        switch(type){
-            case 'expo' :  navigation.navigate('Webview', {
-                link:'https://expo.dev/'
+        switch (type) {
+            case 'expo': navigation.navigate('Webview', {
+                link: 'https://expo.dev/'
             })
             case 'reactnavigation': navigation.navigate('Webview', {
-                link:'https://reactnavigation.org/'
+                link: 'https://reactnavigation.org/'
             })
-            break;
+                break;
         }
 
     }
+    const ImageElement = (
+        <ImageViewElement visible={visible} images={images} currentImageIndex={currentImageIndex} onClose={() => {
+            setIsVisible(false)
+        }} onImageIndexChange={(index) => {
+            console.log(index)
+            setImageIndex(currentImageIndex)
+        }} />
+    )
     return (
         <>
-            <View style={{ height: 700, backgroundColor: 'white' }}>
-                <View style={{ alignItems: 'center', padding: 10, backgroundColor: '#317F91' }}>
-                    <Text style={{ color: "white" }}>DASHBOARD</Text>
-                </View >
-                <View style={{ alignItems: 'cenetr', backgroundColor: 'white', padding: 20 }}>
-                    <Text>QUICK LINKS</Text>
-                </View>
-                <Divider />
-                <ScrollView>
-                    <View style={{ justifyContent: 'space-evenly' }}>
-                        <View >
-                            <Card>
-                                <Card.Title><Icon type="material-community" size={50} color={'green'} name="magnify"></Icon></Card.Title>
-                                <Text style={{ fontSize: 10 }}>Fairwork Award Finder</Text>
-                            </Card>
-                        </View>
-                        <View>
-                            <View>
-                                <TouchableOpacity onPress={() => { halndleLink('expo') }}>
-                                    <Card >
-                                        <Card.Title><Icon type="material-community" size={50} color={'green'} name="av-timer"></Icon></Card.Title>
-                                        <Text style={{ fontSize: 20 }}>Expo Link View</Text>
-
-                                    </Card>
-                                </TouchableOpacity>
-                            </View>
-                        </View>
+            {visible && ImageElement}
+            <Layout title={"DASHBOARD"}>
+                    <View style={{
+                        flex: 1,
+                        flexDirection: 'row',
+                        justifyContent: 'space-around',
+                        backgroundColor: 'traspernt',
+                        flexWrap: 'wrap',
+                    }} >
+                        <IconCardList halndleLink={(slug) => {
+                            halndleLink(slug)
+                        }} />
                     </View>
-                    <View style={{ justifyContent: 'space-evenly' }}>
-                        <View >
-                        <TouchableOpacity onPress={() => { halndleLink('reactnavigation') }}>
-                            <Card>
-                                <Card.Title><Icon type="material-community" size={50} color={'green'} name="link-variant"></Icon></Card.Title>
-                                <Text style={{ fontSize: 20 }}>React Navigation</Text>
-                            </Card>
-                            </TouchableOpacity>
-                        </View>
-                        <View>
-                            <View>
-                                <Card>
-                                    <Card.Title><Icon type="material-community" size={50} color={'green'} name="link-variant"></Icon></Card.Title>
-                                    <Text style={{ fontSize: 10 }}>Fairwork Award Finder</Text>
-
-                                </Card>
-                            </View>
-                        </View>
-                    </View>
-                    <View style={{ alignItems: 'cenetr', backgroundColor: 'white', padding: 20 }}>
-                        <Text>NEWS</Text>
-                    </View>
-                    <Divider />
-                </ScrollView>
-            </View>
+            </Layout>
         </>
     )
 }

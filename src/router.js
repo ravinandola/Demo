@@ -21,11 +21,13 @@ import NetInfo from "@react-native-community/netinfo";
 import ErrorDialogbox from './module/common/Alert';
 import Toast from 'react-native-root-toast';
 import ModalWebView from './module/component/ModalWebView';
+import { withTheme } from '@rneui/themed';
 
 
 const Stack = createNativeStackNavigator();
 
 function Router(props) {
+    const { theme } = props;
     const [route, setRoute] = useState('');
     const [connectionStatus, setConnectionStatus] = useState(false);
     const [connectionType, setConnectionType] = useState(null);
@@ -93,7 +95,9 @@ function Router(props) {
     return (
         <NavigationContainer ref={navigationRef}>
             <Stack.Navigator initialRouteName={'Passcode'} screenOptions={{
-                gestureEnabled: false
+                gestureEnabled: false,
+
+                headerVisible: false,
             }}
             >
                 <Stack.Screen name="Main" component={TabNavigator} options={{
@@ -101,17 +105,19 @@ function Router(props) {
                         <View style={{
                             alignItems: 'center',
                             textDecorationLine: 'none',
-                            marginTop: 40,
-                            marginBottom: 3
+                            marginTop: 0,
+                            marginBottom: 0,
+                            backgroundColor: theme.colors.primary
 
                         }}>
                             <Image
                                 style={{
                                     width: 180,
-                                    height: 52
+                                    height: 52,
+                                    marginTop: 50,
 
                                 }}
-                                source={require("../assets/test.png")
+                                source={require("../assets/logo.png")
                                 } />
                         </View>
                     ),
@@ -139,4 +145,4 @@ const styles = StyleSheet.create({
         height: 50,
     },
 });
-export default Router
+export default withTheme(Router)

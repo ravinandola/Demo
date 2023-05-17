@@ -47,7 +47,7 @@ const TabNavigator = ({ navigation }) => {
         >
             <Tab.Screen name="Home" component={Dashboard} options={{
                 headerShown: false,
-                title: ''
+                title: '',
             }} />
             <Tab.Screen name="operationsManuals" component={OparationsManualsNavigator} options={{
                 headerShown: false,

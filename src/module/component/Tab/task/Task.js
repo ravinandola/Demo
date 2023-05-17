@@ -2,6 +2,7 @@ import { ListItem, Text } from "@rneui/base"
 import { Icon } from "@rneui/themed"
 import { ScrollView, View } from "react-native"
 import { Divider } from "react-native-paper"
+import Layout from "../../../common/Layout"
 
 const Task = ({ navigation }) => {
     let taskList = []
@@ -14,21 +15,18 @@ const Task = ({ navigation }) => {
     }
     return (
         <>
-            <View style={{ alignItems: 'center', padding: 10, backgroundColor: '#317F91', }}>
-                <Text style={{ color: "white" }}>32 Task</Text>
-            </View>
-            <View style={{ backgroundColor: 'white' }}>
+            <Layout title={"32 TASK"}>
+            <View style={{ backgroundColor: 'traspernt' }}>
                 <ScrollView>
-
                     {
                         taskList.map((item) => {
                             return <>
-                                <ListItem onPress={() => { hanldeTask() }}>
-                                    <Icon name="file-document-outline" type="material-community" color="grey" />
+                                <ListItem onPress={() => { hanldeTask() }}  containerStyle={{backgroundColor:"traspernt"}}>
+                                    <Icon name="file-document-outline" type="material-community" color="#317F91" />
                                     <ListItem.Content>
-                                        <ListItem.Title>{item.name}</ListItem.Title>
+                                        <ListItem.Title style={{fontSize:15, color:"gray"}}>{item.name}</ListItem.Title>
                                     </ListItem.Content>
-                                    <ListItem.Subtitle>1 week ago</ListItem.Subtitle>
+                                    <ListItem.Subtitle style={{fontSize:10, color:"gray"}}>1 week ago</ListItem.Subtitle>
                                 </ListItem>
                                 <Divider />
                             </>
@@ -37,6 +35,7 @@ const Task = ({ navigation }) => {
                     }
                 </ScrollView >
             </View >
+            </Layout>
         </>
     )
 }

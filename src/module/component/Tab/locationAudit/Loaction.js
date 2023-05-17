@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, Divider, ListItem, Tab, Text } from "@rneui/base";
+import { Button, ButtonGroup, Divider, FAB, ListItem, Tab, Text } from "@rneui/base";
 import { useEffect } from "react";
 import { useState } from "react";
 import { ScrollView, View } from "react-native";
@@ -131,8 +131,9 @@ const Loaction = ({ navigation }) => {
                 <ButtonGroup
                     onPress={updateIndex}
                     selectedIndex={index}
+                    selectedButtonStyle={{ backgroundColor: '#317F91' }}
                     buttons={buttons}
-                    containerStyle={{ height: 30 }}
+                    containerStyle={{ height: 40, borderRadius: 9 }}
                 />
                 <Divider />
                 <ScrollView>
@@ -142,13 +143,13 @@ const Loaction = ({ navigation }) => {
                                 <View style={{ backgroundColor: 'white' }}>
                                     <ListItem onPress={() => { handleNotStartedAudit(item) }}>
                                         <ListItem.Content>
-                                            <ListItem.Title>{item.userName}</ListItem.Title>
-                                            <ListItem.Subtitle>location :{item.location}</ListItem.Subtitle>
-                                            <ListItem.Subtitle>Task Creat... :{item.taskCreated}</ListItem.Subtitle>
+                                            <ListItem.Title style={{color:"gray"}}>{item.userName.toUpperCase()}</ListItem.Title>
+                                            <ListItem.Subtitle>Location :{item.location}</ListItem.Subtitle>
+                                            <ListItem.Subtitle>Task Creat:{item.taskCreated}</ListItem.Subtitle>
                                             <ListItem.Subtitle>Due Date :  -</ListItem.Subtitle>
                                             <ListItem.Subtitle>status :{item.status}</ListItem.Subtitle>
                                         </ListItem.Content>
-                                        <ListItem.Chevron></ListItem.Chevron>
+                                        <ListItem.Chevron name="menu" type="material-community"></ListItem.Chevron>
                                     </ListItem>
                                     <Divider />
                                 </View >
@@ -162,11 +163,16 @@ const Loaction = ({ navigation }) => {
                         </Text></View>
                     }
                 </ScrollView>
-                <Divider />
-                <View style={{ padding: 20, backgroundColor: 'white' }}>
-                    <Button size="lg" buttonStyle={{ borderRadius: 10, marginBottom: 20, backgroundColor: "#317F91" }} onPress={() => {
-                        handleAudit()
-                    }}>Submit Audit</Button>
+                <View style={{ padding: 10, marginEnd:20, backgroundColor: 'white',alignItems:'flex-end' }}>
+                    <FAB
+                        visible={true}
+                        style={{paddingBottom:25 }}
+                        icon={{ name: 'add', color: 'white' }}
+                        color="#317F91"
+                        onPress={()=>{
+                            handleAudit()
+                        }}
+                    />
                 </View>
             </View>
         </>
