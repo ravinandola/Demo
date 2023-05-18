@@ -7,6 +7,7 @@ import RNPickerSelect from "react-native-picker-select";
 import { BottomSheet } from '@rneui/themed';
 import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from "@react-navigation/native";
+import OpcButtonBottomSheet from "../common/OpcButtonBottomSheet"
 
 let icon = ['share', 'google-chrome', 'close']
 const list = [
@@ -42,7 +43,7 @@ const ModalWebView = ({ route }) => {
         })
     }, []);
 
-    const hanldeList = async (slug) => {
+    const hanldeListItem = async (slug) => {
         switch (slug) {
             case 'share':
                 try {
@@ -66,6 +67,13 @@ const ModalWebView = ({ route }) => {
 
     return (
         <>
+            {/* <OpcButtonBottomSheet
+                isVisible={isVisible}
+                list={list}
+                hanldeList={(slug) => { hanldeListItem(slug) }}
+                iconList={icon}
+            /> */}
+
             <BottomSheet isVisible={isVisible} modalProps={{ presentationStyle: "overFullScreen", animationType: "fade" }}>
                 <View style={{ paddingBottom: insets.bottom }}>
                     {list.map((l, i) => (

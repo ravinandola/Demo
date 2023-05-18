@@ -15,13 +15,15 @@ import OparationsManuals from "./oparationsManuals";
 import OparationsManualsNavigator from "./oparationsManuals/OparationsManualsNavigator";
 import NetInfo from "@react-native-community/netinfo";
 import ErrorDialogbox from "../../common/Alert";
+import { useTheme } from "@rneui/themed";
 
 const Stack = createNativeStackNavigator();
 
 const TabNavigator = ({ navigation }) => {
-
+    const { theme } = useTheme();
+   let color = theme.colors.primary
     const Tab = createBottomTabNavigator();
-   
+
 
     return (
         <Tab.Navigator initialRouteName='Home' screenOptions={({ route }) => ({
@@ -41,7 +43,7 @@ const TabNavigator = ({ navigation }) => {
                 }
                 return <Icon name={iconName} type="material-community" size={size} color={color} />;
             },
-            tabBarActiveTintColor: '#317F91',
+            tabBarActiveTintColor: color,
             tabBarInactiveTintColor: 'gray',
         })}
         >

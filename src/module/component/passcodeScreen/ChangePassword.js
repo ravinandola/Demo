@@ -7,10 +7,13 @@ import PinView from "react-native-pin-view";
 import RBSheet from "react-native-raw-bottom-sheet";
 import LocalStorage from "../../common/LocalStorage";
 import { useNavigation } from "@react-navigation/native";
+import { useTheme } from "@rneui/themed";
 
 
 let finalPasscode = null;
 const ChangePassword = ({ closeModal }) => {
+    const {theme} =  useTheme();
+    let  color =  theme.colors.primary
     const navigation = useNavigation()
     const sheetRef = useRef();
     const pinViewRef = useRef();
@@ -88,29 +91,25 @@ const ChangePassword = ({ closeModal }) => {
                         pinLength={4}
                         inputViewStyle={{
                             borderWidth: 2,
-                            borderColor: '#3B7A57',
+                            borderColor: color,
                         }}
-                        buttonTextColor="white"
-                        inputActiveBgColor="green"
                         onValueChange={(value) => handleValueChnage(value)}
                         buttonSize={75}
                         buttonTextStyle={{
                             fontWeight: 'blod',
                             color: "white",
                         }}
-                        inputViewFilledStyle={{ backgroundColor: 'green' }}
+                        inputViewFilledStyle={{ backgroundColor: color }}
 
                         buttonViewStyle={{
-                            backgroundColor: "#3B7A57",
+                            backgroundColor: color,
                         }}
-                        buttonBgColor="green"
-                        buttonActiveBgColor="darkgreen"
                         ref={pinViewRef}
                         customRightButton={<TouchableOpacity onPress={() => { halndleButton('del') }}>
-                            <Text style={{ color: "#3B7A57" }}>Delete</Text></TouchableOpacity>}
+                            <Text style={{ color: color }}>Delete</Text></TouchableOpacity>}
 
                         customLeftButton={<TouchableOpacity onPress={() => { halndleButton('cal') }}>
-                            <Text style={{ color: "#3B7A57" }}>Cancel</Text></TouchableOpacity>}
+                            <Text style={{ color: color }}>Cancel</Text></TouchableOpacity>}
                     />
                 </View >
             </RBSheet>

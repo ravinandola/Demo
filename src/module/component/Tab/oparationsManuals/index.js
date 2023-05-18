@@ -1,4 +1,4 @@
-import { View } from "react-native"
+import { ScrollView, View } from "react-native"
 import Layout from "../../../common/Layout";
 import DocCardList from "../../../common/DocCardList";
 const OparationsManuals = ({ navigation }) => {
@@ -9,18 +9,21 @@ const OparationsManuals = ({ navigation }) => {
     return (
         <>
             <Layout title={'OPREACTIONS MANUALS'}>
-                <View style={{
-                    flex: 1,
-                    flexDirection: 'row',
-                    justifyContent: 'space-around',
-                    backgroundColor: 'traspernt',
-                    flexWrap: 'wrap',
-                    alignItems:'center'
+                <ScrollView showsVerticalScrollIndicator={false}>
 
-                }}>
-                    <DocCardList/>
+                    <View style={{
+                        flex: 1,
+                        flexDirection: 'row',
+                        justifyContent: 'space-around',
+                        backgroundColor: 'traspernt',
+                        flexWrap: 'wrap',
+                        alignItems: 'center'
 
-                </View >
+                    }}>
+                        <DocCardList />
+
+                    </View >
+                </ScrollView>
             </Layout>
         </>
     )

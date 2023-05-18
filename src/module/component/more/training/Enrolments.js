@@ -1,6 +1,9 @@
 import { ButtonGroup, Image, Text } from "@rneui/base"
 import { useState } from "react";
 import { ScrollView, View } from "react-native"
+import OpcButtonGroup from "../../../common/OpcButtonGroup";
+import Layout from "../../../common/Layout";
+import DocCardList from "../../../common/DocCardList";
 const Enrolments = () => {
     const [index, setIndex] = useState(0);
 
@@ -9,51 +12,34 @@ const Enrolments = () => {
         console.log("ff")
     };
     const buttons = ['Enrolments', 'All Programs']
-
+    const updateIndex = (index) => {
+        setIndex(index)
+    }
     return (
         <>
-            <View style={{ backgroundColor: 'white', height: 700 }}>
-                <View style={{ alignItems: 'center', padding: 10, backgroundColor: '#317F91' }}>
-                    <Text style={{ color: "white" }}>Training</Text>
-                </View>
-                <View style={{
-                    paddingLeft: 20, paddingRight: 20,
-                }} >
-                    <ButtonGroup
-                        onPress={(index) => { setIndex(index) }}
-                        selectedIndex={index}
-                        buttons={buttons}
-                        containerStyle={{ height: 30 }}
-                    />
-                </View>
-                <ScrollView>
-                    <View style={{
-                        flex: 2,
-                        flexDirection: 'row',
-                        marginTop: 20,
-                        justifyContent: 'space-around',
-                        flexWrap: 'wrap',
-                    }}>
-                        {
-                            value.map(() => {
-                                return <View style={{
-                                }}>
 
-                                    <Image
-                                        source={require("../../../../../assets/doc.png")}
-                                        style={{
-                                            width: 180,
-                                            height: 170,
-                                        }}
-                                        onPress={() => { halderTraining() }}
-                                    />
-                                    <Text style={{ textAlign: 'cenetr', paddingLeft: 5, paddingTop: 20, paddingBottom: 20 }}>MY PROGRAM POLICY</Text>
-                                </View>
-                            })
-                        }
-                    </View>
-                </ScrollView>
-            </View>
+            <Layout title={"TRAINING"}>
+                    <OpcButtonGroup
+                        updateIndex={updateIndex}
+                        index={index}
+                        buttons={buttons}
+                        containerStyle={{ height: 35, borderRadius: 1 }}
+                    />
+                    <ScrollView showsVerticalScrollIndicator={false}>
+                        <View style={{
+                            flex: 1,
+                            flexDirection: 'row',
+                            justifyContent: 'space-around',
+                            backgroundColor: 'traspernt',
+                            flexWrap: 'wrap',
+                            alignItems: 'center'
+
+                        }}>
+                            <DocCardList />
+
+                        </View >
+                    </ScrollView>
+            </Layout>
         </>
     )
 }

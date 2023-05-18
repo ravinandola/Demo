@@ -1,32 +1,39 @@
 import { Icon, ListItem, Text } from "@rneui/base"
 import { View } from "react-native"
 import { Divider } from "react-native-paper"
-
+import Layout from "../../common/Layout"
+import OpcButtonGroup from "../../common/OpcButtonGroup"
+import OpcListItem from "../../common/OpcListItem"
+import IconWrapper from "../../common/IconWrapper"
+const notificationsList = [{
+    Title: "Test",
+    subtitle: "1 week ago",
+    icon: "bell"
+},
+{
+    Title: "Test",
+    subtitle: "1 week ago",
+    icon: "bell"
+}
+]
 const Notifications = () => {
     return (<>
-        <View style={{ alignItems: 'center', padding: 10, backgroundColor: '#317F91' }}>
-            <Text style={{ color: "white" }}>2 Notifications</Text>
-        </View>
-        <View style={{ backgroundColor: 'white' }}>
-            <ListItem>
-                <Icon name="inbox" type="material-community" color="grey" />
-                <ListItem.Content>
-                    <ListItem.Title>test</ListItem.Title>
-                </ListItem.Content>
-                <ListItem.Subtitle>1 week ago</ListItem.Subtitle>
-                <ListItem.Chevron name="bell" type="material-community"></ListItem.Chevron>
-            </ListItem>
-            <Divider />
-            <ListItem>
-                <Icon name="bell" type="material-community" color="grey" />
-                <ListItem.Content>
-                    <ListItem.Title>test2</ListItem.Title>
-                </ListItem.Content>
-                <ListItem.Subtitle>1 week ago</ListItem.Subtitle>
-                <ListItem.Chevron name="bell" type="material-community"></ListItem.Chevron>
-            </ListItem>
-            <Divider />
-        </View>
+        <Layout title={`${notificationsList.length} Notifications`}>
+            {
+                notificationsList.map((item) => {
+                    return <>
+                        <OpcListItem>
+                        <IconWrapper name={item.icon} />
+                            <OpcListItem.Content>
+                                <OpcListItem.Title>{item.Title}</OpcListItem.Title>
+                            </OpcListItem.Content>
+                            <OpcListItem.Subtitle>{item.subtitle}</OpcListItem.Subtitle>
+                        </OpcListItem>
+                        <Divider/>
+                    </>
+                })
+            }
+        </Layout>
     </>)
 }
 export default Notifications

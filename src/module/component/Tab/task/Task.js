@@ -3,6 +3,8 @@ import { Icon } from "@rneui/themed"
 import { ScrollView, View } from "react-native"
 import { Divider } from "react-native-paper"
 import Layout from "../../../common/Layout"
+import OpcListItem from "../../../common/OpcListItem"
+import IconWrapper from "../../../common/IconWrapper"
 
 const Task = ({ navigation }) => {
     let taskList = []
@@ -15,26 +17,26 @@ const Task = ({ navigation }) => {
     }
     return (
         <>
-            <Layout title={"32 TASK"}>
-            <View style={{ backgroundColor: 'traspernt' }}>
-                <ScrollView>
-                    {
-                        taskList.map((item) => {
-                            return <>
-                                <ListItem onPress={() => { hanldeTask() }}  containerStyle={{backgroundColor:"traspernt"}}>
-                                    <Icon name="file-document-outline" type="material-community" color="#317F91" />
-                                    <ListItem.Content>
-                                        <ListItem.Title style={{fontSize:15, color:"gray"}}>{item.name}</ListItem.Title>
-                                    </ListItem.Content>
-                                    <ListItem.Subtitle style={{fontSize:10, color:"gray"}}>1 week ago</ListItem.Subtitle>
-                                </ListItem>
-                                <Divider />
-                            </>
+            <Layout title={"TASK"}>
+                <View style={{ backgroundColor: 'traspernt' }}>
+                    <ScrollView showsVerticalScrollIndicator={false}>
+                        {
+                            taskList.map((item) => {
+                                return <>
+                                    <OpcListItem backgroundColor={''}>
+                                        <IconWrapper name="file-document-outline" />
+                                        <OpcListItem.Content>
+                                        <OpcListItem.Title>{item.name}</OpcListItem.Title>
+                                        </OpcListItem.Content>
+                                        <OpcListItem.Subtitle>1 week ago</OpcListItem.Subtitle>
+                                    </OpcListItem>
+                                    <Divider />
+                                </>
 
-                        })
-                    }
-                </ScrollView >
-            </View >
+                            })
+                        }
+                    </ScrollView >
+                </View >
             </Layout>
         </>
     )

@@ -8,17 +8,22 @@ import { TouchableOpacity } from 'react-native';
 import LocalStorage from '../../common/LocalStorage';
 import * as LocalAuthentication from 'expo-local-authentication';
 import NetInfo from "@react-native-community/netinfo";
+import { useTheme } from '@rneui/themed';
 
 const PasscodeScreen = ({ navigation, route }) => {
+    const { theme } = useTheme();
+    let bgColor = theme.colors.primary;
+
     const [label, setLable] = useState({
         title: '',
         subTitle: ''
     });
     const pinViewRef = useRef(null);
 
-  
+
     async function fetchData() {
         let finalPasscode = await LocalStorage.get('finalPasscode') || null;
+        console.log("finalPasscode",finalPasscode)
         let title = ''
         let subTitle = '';
         if (finalPasscode) {
@@ -123,26 +128,22 @@ const PasscodeScreen = ({ navigation, route }) => {
                 pinLength={4}
                 inputViewStyle={{
                     borderWidth: 2,
-                    borderColor: '#3B7A57',
+                    borderColor: bgColor,
                 }}
-                buttonTextColor="white"
-                inputActiveBgColor="green"
                 onValueChange={(value) => handleValueChnage(value)}
                 buttonSize={75}
                 buttonTextStyle={{
                     color: "white",
                 }}
                 errorText="Incorrect PIN"
-                inputViewFilledStyle={{ backgroundColor: 'green' }}
+                inputViewFilledStyle={{ backgroundColor: bgColor }}
 
                 buttonViewStyle={{
-                    backgroundColor: "#3B7A57",
+                    backgroundColor: bgColor,
                 }}
-                buttonBgColor="green"
-                buttonActiveBgColor="darkgreen"
                 ref={pinViewRef}
                 customRightButton={<TouchableOpacity onPress={() => { halndleDel() }}>
-                    <Text style={{ color: "#3B7A57" }}>Delete</Text></TouchableOpacity>}
+                    <Text style={{ color: bgColor }}>Delete</Text></TouchableOpacity>}
             />
         </View>
     )

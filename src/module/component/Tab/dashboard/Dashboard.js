@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Button } from "@rneui/themed";
 import Layout from "../../../common/Layout";
 import IconCardList from "../../../common/IconCardList";
+
 const images = [
     {
         uri: "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg",
@@ -33,20 +34,21 @@ const Dashboard = ({ navigation }) => {
             })
                 break;
         }
+    };
 
-    }
     const ImageElement = (
         <ImageViewElement visible={visible} images={images} currentImageIndex={currentImageIndex} onClose={() => {
             setIsVisible(false)
         }} onImageIndexChange={(index) => {
-            console.log(index)
             setImageIndex(currentImageIndex)
         }} />
-    )
+    );
+
     return (
         <>
             {visible && ImageElement}
             <Layout title={"DASHBOARD"}>
+                <ScrollView showsVerticalScrollIndicator={false}>
                     <View style={{
                         flex: 1,
                         flexDirection: 'row',
@@ -58,6 +60,7 @@ const Dashboard = ({ navigation }) => {
                             halndleLink(slug)
                         }} />
                     </View>
+                </ScrollView>
             </Layout>
         </>
     )

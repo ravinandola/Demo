@@ -1,8 +1,13 @@
-import { Button, ButtonGroup, Divider, FAB, ListItem, Tab, Text } from "@rneui/base";
+import { Button, Divider, ListItem, Tab, Text } from "@rneui/base";
 import { useEffect } from "react";
 import { useState } from "react";
 import { ScrollView, View } from "react-native";
 import RBSheet from "react-native-raw-bottom-sheet";
+import Layout from "../../../common/Layout";
+import { ButtonGroup, FAB } from "@rneui/themed";
+import { useTheme } from "@rneui/themed"
+import OpcListItem from "../../../common/OpcListItem";
+import OpcButtonGroup from "../../../common/OpcButtonGroup";
 
 const notStartData = [{
     userName: "test",
@@ -92,6 +97,8 @@ const CompletedData = [
 ]
 
 const Loaction = ({ navigation }) => {
+    const { theme } = useTheme();
+    let themeColor = theme.colors.primary
     const [list, setList] = useState(notStartData);
     const [index, setIndex] = useState(0);
 
@@ -124,37 +131,31 @@ const Loaction = ({ navigation }) => {
 
     return (
         <>
-            <View style={{ backgroundColor: 'white', height: 700 }}>
-                <View style={{ alignItems: 'center', padding: 10, backgroundColor: '#317F91' }}>
-                    <Text style={{ color: "white" }}>LOCATION AUDIT</Text>
+            <Layout title={'LOCATION AUDIT'}>
+                <View>
+                    <OpcButtonGroup
+                        updateIndex={updateIndex}
+                        index={index}
+                        buttons={buttons}
+                        containerStyle={{ height: 35, borderRadius: 1 }}
+                    />
                 </View>
-                <ButtonGroup
-                    onPress={updateIndex}
-                    selectedIndex={index}
-                    selectedButtonStyle={{ backgroundColor: '#317F91' }}
-                    buttons={buttons}
-                    containerStyle={{ height: 40, borderRadius: 9 }}
-                />
                 <Divider />
-                <ScrollView>
+                <ScrollView showsVerticalScrollIndicator={false}>
                     {
                         list.map((item) => {
                             return <>
-                                <View style={{ backgroundColor: 'white' }}>
-                                    <ListItem onPress={() => { handleNotStartedAudit(item) }}>
-                                        <ListItem.Content>
-                                            <ListItem.Title style={{color:"gray"}}>{item.userName.toUpperCase()}</ListItem.Title>
-                                            <ListItem.Subtitle>Location :{item.location}</ListItem.Subtitle>
-                                            <ListItem.Subtitle>Task Creat:{item.taskCreated}</ListItem.Subtitle>
-                                            <ListItem.Subtitle>Due Date :  -</ListItem.Subtitle>
-                                            <ListItem.Subtitle>status :{item.status}</ListItem.Subtitle>
-                                        </ListItem.Content>
-                                        <ListItem.Chevron name="menu" type="material-community"></ListItem.Chevron>
-                                    </ListItem>
-                                    <Divider />
-                                </View >
+                                <OpcListItem onPress={() => { handleNotStartedAudit(item) }}>
+                                    <OpcListItem.Content>
+                                        <OpcListItem.Title color={'black'}>{item.userName.toUpperCase()}</OpcListItem.Title>
+                                        <OpcListItem.Subtitle style={{ marginTop: 3 }}><OpcListItem.Subtitle color={'black'} >Location: </OpcListItem.Subtitle>{item.location}</OpcListItem.Subtitle>
+                                        <OpcListItem.Subtitle style={{ marginTop: 3 }}><OpcListItem.Subtitle color={'black'} >Task Creat: </OpcListItem.Subtitle>{item.taskCreated}</OpcListItem.Subtitle>
+                                        <OpcListItem.Subtitle style={{ marginTop: 3 }}><OpcListItem.Subtitle color={'black'} >status: </OpcListItem.Subtitle>{item.status}</OpcListItem.Subtitle>
+                                    </OpcListItem.Content>
+                                    <ListItem.Chevron></ListItem.Chevron>
+                                </OpcListItem>
+                                <Divider />
                             </>
-
                         })
                     }
                     {
@@ -163,18 +164,16 @@ const Loaction = ({ navigation }) => {
                         </Text></View>
                     }
                 </ScrollView>
-                <View style={{ padding: 10, marginEnd:20, backgroundColor: 'white',alignItems:'flex-end' }}>
-                    <FAB
-                        visible={true}
-                        style={{paddingBottom:25 }}
-                        icon={{ name: 'add', color: 'white' }}
-                        color="#317F91"
-                        onPress={()=>{
-                            handleAudit()
-                        }}
-                    />
-                </View>
-            </View>
+                <FAB
+                    visible={true}
+                    style={{ paddingBottom: 25, position: 'absolute', bottom: 2, end: 20 }}
+                    icon={{ name: 'add', color: 'white' }}
+                    color={themeColor}
+                    onPress={() => {
+                        handleAudit()
+                    }}
+                />
+            </Layout >
         </>
     )
 }

@@ -1,17 +1,10 @@
-import { Divider, Text } from "@rneui/base"
 import { useState } from "react"
-import { useRef } from "react"
 import { StyleSheet, Picker, DatePickerIOS, TouchableOpacity } from 'react-native';
-import SearchableDropdown from 'react-native-searchable-dropdown';
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
-
-import _, { create } from "lodash";
 import RNPickerSelect from "react-native-picker-select";
 import { View } from "react-native";
 import { Button, CheckBox, Icon } from "@rneui/base/dist";
 import { UseVisible } from "../../../common/hook/useVisible";
-import { Input } from "@rneui/themed/dist";
 import moment from "moment";
 import ErrorDialogbox from "../../../common/Alert";
 
