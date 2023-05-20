@@ -18,27 +18,24 @@ const Enrolments = () => {
     return (
         <>
 
-            <Layout title={"TRAINING"}>
-                    <OpcButtonGroup
-                        updateIndex={updateIndex}
-                        index={index}
-                        buttons={buttons}
-                        containerStyle={{ height: 35, borderRadius: 1 }}
-                    />
-                    <ScrollView showsVerticalScrollIndicator={false}>
-                        <View style={{
-                            flex: 1,
-                            flexDirection: 'row',
-                            justifyContent: 'space-around',
-                            backgroundColor: 'traspernt',
-                            flexWrap: 'wrap',
-                            alignItems: 'center'
+            <Layout title={"TRAINING"} isScroll={true}>
+                <OpcButtonGroup
+                    updateIndex={updateIndex}
+                    index={index}
+                    buttons={buttons}
+                    containerStyle={{ height: 35, borderRadius: 1 }}
+                />
+                <View style={{
+                    flex: 1,
+                    flexDirection: 'row',
+                    justifyContent: 'space-around',
+                    backgroundColor: 'traspernt',
+                    flexWrap: 'wrap',
+                    alignItems: 'center'
 
-                        }}>
-                            <DocCardList />
-
-                        </View >
-                    </ScrollView>
+                }}>
+                    <DocCardList />
+                </View >
             </Layout>
         </>
     )

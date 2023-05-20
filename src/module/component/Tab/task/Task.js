@@ -17,25 +17,23 @@ const Task = ({ navigation }) => {
     }
     return (
         <>
-            <Layout title={"TASK"}>
+            <Layout title={"TASK"} isScroll={true}>
                 <View style={{ backgroundColor: 'traspernt' }}>
-                    <ScrollView showsVerticalScrollIndicator={false}>
-                        {
-                            taskList.map((item) => {
-                                return <>
-                                    <OpcListItem backgroundColor={''}>
-                                        <IconWrapper name="file-document-outline" />
-                                        <OpcListItem.Content>
+                    {
+                        taskList.map((item) => {
+                            return <>
+                                <OpcListItem backgroundColor={''}>
+                                    <IconWrapper name="file-document-outline" />
+                                    <OpcListItem.Content>
                                         <OpcListItem.Title>{item.name}</OpcListItem.Title>
-                                        </OpcListItem.Content>
-                                        <OpcListItem.Subtitle>1 week ago</OpcListItem.Subtitle>
-                                    </OpcListItem>
-                                    <Divider />
-                                </>
+                                    </OpcListItem.Content>
+                                    <OpcListItem.Subtitle>1 week ago</OpcListItem.Subtitle>
+                                </OpcListItem>
+                                <Divider />
+                            </>
 
-                            })
-                        }
-                    </ScrollView >
+                        })
+                    }
                 </View >
             </Layout>
         </>

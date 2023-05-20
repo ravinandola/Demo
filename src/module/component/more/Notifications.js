@@ -18,7 +18,7 @@ const notificationsList = [{
 ]
 const Notifications = () => {
     return (<>
-        <Layout title={`${notificationsList.length} Notifications`}>
+        <Layout title={`${notificationsList.length} Notifications`}  isScroll={false}>
             {
                 notificationsList.map((item) => {
                     return <>

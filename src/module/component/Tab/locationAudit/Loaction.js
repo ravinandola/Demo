@@ -131,7 +131,7 @@ const Loaction = ({ navigation }) => {
 
     return (
         <>
-            <Layout title={'LOCATION AUDIT'}>
+            <Layout title={'LOCATION AUDIT'}  isScroll={true}>
                 <View>
                     <OpcButtonGroup
                         updateIndex={updateIndex}

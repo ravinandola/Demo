@@ -47,8 +47,7 @@ const Dashboard = ({ navigation }) => {
     return (
         <>
             {visible && ImageElement}
-            <Layout title={"DASHBOARD"}>
-                <ScrollView showsVerticalScrollIndicator={false}>
+            <Layout title={"DASHBOARD"} isScroll={true}>
                     <View style={{
                         flex: 1,
                         flexDirection: 'row',
@@ -60,7 +59,6 @@ const Dashboard = ({ navigation }) => {
                             halndleLink(slug)
                         }} />
                     </View>
-                </ScrollView>
             </Layout>
         </>
     )

@@ -8,22 +8,19 @@ const OparationsManuals = ({ navigation }) => {
     }
     return (
         <>
-            <Layout title={'OPREACTIONS MANUALS'}>
-                <ScrollView showsVerticalScrollIndicator={false}>
+            <Layout title={'OPREACTIONS MANUALS'} isScroll={true}>
+                <View style={{
+                    flex: 1,
+                    flexDirection: 'row',
+                    justifyContent: 'space-evenly',
+                    backgroundColor: 'traspernt',
+                    flexWrap: 'wrap',
+                    alignItems: 'center'
 
-                    <View style={{
-                        flex: 1,
-                        flexDirection: 'row',
-                        justifyContent: 'space-around',
-                        backgroundColor: 'traspernt',
-                        flexWrap: 'wrap',
-                        alignItems: 'center'
+                }}>
+                    <DocCardList />
 
-                    }}>
-                        <DocCardList />
-
-                    </View >
-                </ScrollView>
+                </View >
             </Layout>
         </>
     )
