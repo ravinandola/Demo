@@ -60,6 +60,7 @@ const AdutiSubmit = ({ route, navigation }) => {
                 </View>
                 <View style={{ marginTop: 20, marginEnd: 20, marginLeft: 20 }}>
                     <DateTimePickerModal
+                        date={moment(date)}
                         isVisible={show}
                         mode="datetime"
                         onConfirm={handleDateConfirm}

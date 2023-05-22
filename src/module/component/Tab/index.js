@@ -16,12 +16,13 @@ import OparationsManualsNavigator from "./oparationsManuals/OparationsManualsNav
 import NetInfo from "@react-native-community/netinfo";
 import ErrorDialogbox from "../../common/Alert";
 import { useTheme } from "@rneui/themed";
+import UserNavigator from "../user.js/UserNavigator";
 
 const Stack = createNativeStackNavigator();
 
 const TabNavigator = ({ navigation }) => {
     const { theme } = useTheme();
-   let color = theme.colors.primary
+    let color = theme.colors.primary
     const Tab = createBottomTabNavigator();
 
 
@@ -39,6 +40,8 @@ const TabNavigator = ({ navigation }) => {
                     case 'Tasks': iconName = 'calendar-check-outline';
                         break;
                     case 'More': iconName = 'menu';
+                        break;
+                    case 'User': iconName = 'account-details';
                         break;
                 }
                 return <Icon name={iconName} type="material-community" size={size} color={color} />;
@@ -64,6 +67,11 @@ const TabNavigator = ({ navigation }) => {
                 headerShown: false,
                 tabBarBadge: 32,
                 tabBarBadgeStyle: { backgroundColor: 'green' },
+                title: "",
+            }}
+            />
+            <Tab.Screen name="User" component={UserNavigator} options={{
+                headerShown: false,
                 title: "",
             }}
             />

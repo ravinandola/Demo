@@ -18,7 +18,7 @@ const Layout = (props) => {
         const insets = useSafeAreaInsets();
         const HEADER_HEIGHT = 100;
         const headerHeight = animatedValue.interpolate({
-            inputRange: [0, 0],
+            inputRange: [0, HEADER_HEIGHT + 100],
             outputRange: [HEADER_HEIGHT + insets.top, insets.top + 20],
             extrapolate: 'clamp'
         });

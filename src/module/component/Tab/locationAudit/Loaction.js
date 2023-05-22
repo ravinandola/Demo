@@ -131,7 +131,7 @@ const Loaction = ({ navigation }) => {
 
     return (
         <>
-            <Layout title={'LOCATION AUDIT'}  isScroll={true}>
+            <Layout title={'LOCATION AUDIT'} isScroll={true}>
                 <View>
                     <OpcButtonGroup
                         updateIndex={updateIndex}
@@ -141,39 +141,38 @@ const Loaction = ({ navigation }) => {
                     />
                 </View>
                 <Divider />
-                <ScrollView showsVerticalScrollIndicator={false}>
-                    {
-                        list.map((item) => {
-                            return <>
-                                <OpcListItem onPress={() => { handleNotStartedAudit(item) }}>
-                                    <OpcListItem.Content>
-                                        <OpcListItem.Title color={'black'}>{item.userName.toUpperCase()}</OpcListItem.Title>
-                                        <OpcListItem.Subtitle style={{ marginTop: 3 }}><OpcListItem.Subtitle color={'black'} >Location: </OpcListItem.Subtitle>{item.location}</OpcListItem.Subtitle>
-                                        <OpcListItem.Subtitle style={{ marginTop: 3 }}><OpcListItem.Subtitle color={'black'} >Task Creat: </OpcListItem.Subtitle>{item.taskCreated}</OpcListItem.Subtitle>
-                                        <OpcListItem.Subtitle style={{ marginTop: 3 }}><OpcListItem.Subtitle color={'black'} >status: </OpcListItem.Subtitle>{item.status}</OpcListItem.Subtitle>
-                                    </OpcListItem.Content>
-                                    <ListItem.Chevron></ListItem.Chevron>
-                                </OpcListItem>
-                                <Divider />
-                            </>
-                        })
-                    }
-                    {
-                        list.length === 0 && <View style={{ alignItems: 'center', paddingTop: 30 }}><Text>
-                            Data Not Found
-                        </Text></View>
-                    }
-                </ScrollView>
-                <FAB
-                    visible={true}
-                    style={{ paddingBottom: 25, position: 'absolute', bottom: 2, end: 20 }}
-                    icon={{ name: 'add', color: 'white' }}
-                    color={themeColor}
-                    onPress={() => {
-                        handleAudit()
-                    }}
-                />
-            </Layout >
+                {
+                    list.map((item) => {
+                        return <>
+                            <OpcListItem onPress={() => { handleNotStartedAudit(item) }}>
+                                <OpcListItem.Content>
+                                    <OpcListItem.Title color={'black'}>{item.userName.toUpperCase()}</OpcListItem.Title>
+                                    <OpcListItem.Subtitle style={{ marginTop: 3 }}><OpcListItem.Subtitle color={'black'} >Location: </OpcListItem.Subtitle>{item.location}</OpcListItem.Subtitle>
+                                    <OpcListItem.Subtitle style={{ marginTop: 3 }}><OpcListItem.Subtitle color={'black'} >Task Creat: </OpcListItem.Subtitle>{item.taskCreated}</OpcListItem.Subtitle>
+                                    <OpcListItem.Subtitle style={{ marginTop: 3 }}><OpcListItem.Subtitle color={'black'} >status: </OpcListItem.Subtitle>{item.status}</OpcListItem.Subtitle>
+                                </OpcListItem.Content>
+                                <ListItem.Chevron></ListItem.Chevron>
+                            </OpcListItem>
+                            <Divider />
+                        </>
+                    })
+                }
+                {
+                    list.length === 0 && <View style={{ alignItems: 'center', paddingTop: 30 }}><Text>
+                        Data Not Found
+                    </Text></View>
+                }
+
+            </Layout>
+            <FAB
+                visible={true}
+                style={{ paddingBottom: 25, position: 'absolute', bottom: 2, end: 20 }}
+                icon={{ name: 'add', color: 'white' }}
+                color={themeColor}
+                onPress={() => {
+                    handleAudit()
+                }}
+            />
         </>
     )
 }

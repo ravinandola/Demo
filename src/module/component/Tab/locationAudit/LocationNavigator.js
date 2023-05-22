@@ -29,7 +29,6 @@ const LocationNavigator = ({ navigation, route }) => {
             <Stack.Screen name="PreviewMode" component={PreviewMode} options={{
                 headerShown: false
             }} />
-
         </Stack.Navigator>
     )
 }

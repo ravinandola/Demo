@@ -22,7 +22,7 @@ import ErrorDialogbox from './module/common/Alert';
 import Toast from 'react-native-root-toast';
 import ModalWebView from './module/component/ModalWebView';
 import { withTheme } from '@rneui/themed';
-import UserForm from './module/component/UserForm';
+import UserForm from './module/component/user.js/UserForm';
 
 
 const Stack = createNativeStackNavigator();
@@ -95,7 +95,7 @@ function Router(props) {
 
     return (
         <NavigationContainer ref={navigationRef}>
-            <Stack.Navigator initialRouteName={'UserForm'} screenOptions={{
+            <Stack.Navigator initialRouteName={'Main'} screenOptions={{
                 gestureEnabled: false,
 
                 headerVisible: false,
@@ -127,7 +127,6 @@ function Router(props) {
                     },
                 }} />
                 <Stack.Screen name='Passcode' component={PasscodeScreen} options={{ headerShown: false, title: '' }} />
-                <Stack.Screen name='UserForm' component={UserForm} options={{ headerShown: false, title: '' }} />
 
                 <Stack.Screen name="Domain" component={DomainScreen} options={{ headerShown: false, title: '' }} />
                 <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false, title: '' }} />
