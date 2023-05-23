@@ -4,7 +4,7 @@ import DocCardList from "../../../common/DocCardList";
 const OparationsManuals = ({ navigation }) => {
 
     const hanldeChnage = () => {
-        navigation.navigate('Policie');
+        navigation.navigate('Html');
     }
     return (
         <>
@@ -18,7 +18,9 @@ const OparationsManuals = ({ navigation }) => {
                     alignItems: 'center'
 
                 }}>
-                    <DocCardList />
+                    <DocCardList hanldePolicie={() => {
+                        hanldeChnage()
+                    }} />
 
                 </View >
             </Layout>

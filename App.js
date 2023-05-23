@@ -4,12 +4,19 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { store } from './src/redux';
 import React from 'react';
 import { RootSiblingParent } from 'react-native-root-siblings';
-import { AppState } from 'react-native';
+import { AppState,NativeModules } from 'react-native';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Button, lightColors, createTheme, ThemeProvider } from '@rneui/themed';
+import { Button, lightColors, createTheme, ThemeProvider, getIconType } from '@rneui/themed';
+import {changeIcon, getIcon} from 'react-native-change-icon';
 
 export default function App({ navigation }) {
+
+// Pass the name of icon to be enabled
+
+
+console.log(res)
+// Get the 
   const theme = createTheme({
     lightColors: {
       primary: '#6699CC',

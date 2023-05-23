@@ -10,11 +10,11 @@ const UserList = ({ navigation }) => {
     const { theme } = useTheme();
     let themeColor = theme.colors.primary
     const { userList } = useDatabase();
-    console.log(userList)
+
     const [list, setList] = useState([])
     useEffect(() => {
         setList(userList)
-    }, [navigation, userList])
+    }, [userList])
     const hanldeList = (user) => {
         navigation.navigate('form', { item: user });
     }

@@ -62,7 +62,26 @@ const MoreList = ({ navigation }) => {
         <>
 
             {show && ChangePasswordElement}
-          c
+            <Layout title={'USER LIST'} isScroll={false}>
+                <View style={{ backgroundColor: "traspernt", paddingStart: 10, paddingEnd: 10 }}>
+                    {
+                        MoreItemList.map((item) => {
+                            return <>
+                                <OpcListItem onPress={() => { hanldeList(item.slug) }}>
+                                    <IconWrapper name={item.icon}/>
+                                    <OpcListItem.Content>
+                                        <OpcListItem.Title> {item.title}</OpcListItem.Title>
+                                    </OpcListItem.Content>
+                                    <OpcListItem.Chevron />
+                                </OpcListItem>
+                                <Divider />
+                            </>
+                        })
+                    }
+                </View>
+
+                <Divider />
+            </Layout >
         </>
     )
 }
