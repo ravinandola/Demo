@@ -13,9 +13,6 @@ import {changeIcon, getIcon} from 'react-native-change-icon';
 export default function App({ navigation }) {
 
 // Pass the name of icon to be enabled
-
-
-console.log(res)
 // Get the 
   const theme = createTheme({
     lightColors: {
